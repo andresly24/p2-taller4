@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotos Arial</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+</head>
+<style>
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  .main-content {
+    flex: 1;
+    display: flex;
+  }
+
+  .nav-menu {
+    min-width: 200px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+  }
+</style>
+</head>
+
+<body>
+
+  <%- include("partials/header") -%>
+
+  <div class="main-content container-fluid">
+    <%-  include("partials/menu")-%>
+
+    <div class="content p-3">
+      <div class="container-fluid p-4">
+        <h1 class="pb-4"><b><%= title %></b></h1>
+        <centre>
+        <table id="fotosTable" class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Titulo</th>
+              <th>Calificación</th>
+              <th>Etiquetas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% arrFotos.forEach(function(foto) { %>
+            <tr>
+              <td><%= foto.id %></td>
+              <td><%= foto.titulo %></td>
+              <td><%= foto.calificacion %></td>
+              <td><%= foto.etiquetas %></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </centre>
+      </div>
+      <div>
+         <div class="container">
+          <div class="row justify-content-center">
+            <!-- label of etiquetas -->
+             <div class="col-md-12">
+              <label for="etiquetas" class="form-control">foto</label>
+              <label for="etiquetas" class="form-control">payaso</label>
+              <label for="etiquetas" class="form-control">rojo</label>
+              <label for="etiquetas" class="form-control">azul</label>
+              <label for="etiquetas" class="form-control">techo</label>
+              <label for="etiquetas" class="form-control">cielo</label>
+             </div>
+            <div class="col-md-4">
+              <button class="btn btn-primary"> Agregar</button>
+            </div>
+          </div>
+         </div>
+      </div>
+  </div>
+  </div>
+  <%-  include("partials/footer") -%>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+
+<script>
+  $(document).ready(function() {
+    // Inicializar DataTables
+    $('#fotosTable').DataTable();
+  });
+</script>
+
+</html>
+
+
+
+
+
+<!-- <table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Título</th>
+      <th>Descripción</th>
+      <th>Ruta</th>
+      <th>Fecha de creación</th>
+      <th>Etiqueta</th>
+    </tr>
+  </thead>
+  <tbody>
+    < arrFotos.forEach((foto) => { %>
+    <tr>
+      <td><= foto.id %></td>
+      <td><= foto.titulo %></td>
+      <td><= foto.descripcion %></td>
+      <td><= foto.ruta %></td>
+      <td><=foto.createdAt.toLocaleDateString('en-US')%></td>                     
+      <td><= foto.etiqueta %></td>
+    </tr>
+    < }); %>
+  </tbody>
+</table> -->
